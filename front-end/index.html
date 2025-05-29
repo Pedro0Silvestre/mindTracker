@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MindTrack IA - Avaliação Emocional</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="cabecalho">
+        <h1 class="titulo">MindTrack IA</h1>
+        <p class="subtitulo">Responda a algumas perguntas e avalie seu bem-estar emocional</p>
+    </header>
+    <main class="main">
+        <form class="formulario">
+            <div class="formulario__item">
+                <label for="questao1">1. Como você tem se sentido nos últimos dias?</label>
+                <textarea id="questao1" name="questao1" rows="3" required></textarea>
+            </div>
+            <div class="formulario__item">
+                <label for="questao2">2. Quais desafios você encontrou nas suas atividades recentes?</label>
+                <textarea id="questao2" name="questao2" rows="3" required></textarea>
+            </div>
+            <div class="formulario__item">
+                <label for="questao3">3. Como está a qualidade do seu sono nas últimas semanas?</label>
+                <textarea id="questao3" name="questao3" rows="3" required></textarea>
+            </div>
+            <div class="formulario__item">
+                <label for="questao4">4. Tem algo que está te preocupando ou gerando ansiedade ultimamente?</label>
+                <textarea id="questao4" name="questao4" rows="3" required></textarea>
+            </div>
+            <div class="formulario__item">
+                <label for="questao5">5. Você conseguiu realizar momentos de relaxamento ou lazer? Se sim, como foram?</label>
+                <textarea id="questao5" name="questao5" rows="3" required></textarea>
+            </div>
+            <button type="submit" id="botao">Enviar Respostas</button>
+        </form>
+    </main>
+    <footer>
+        <p>© 2025 MindTrack IA. Todos os direitos reservados.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
