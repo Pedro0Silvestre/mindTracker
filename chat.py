@@ -102,7 +102,7 @@ def gerar_mensagem_mock(risco_total):
 def nivel_risco(score):
     if score < 0.3:
         return "Low"
-    elif score < 0.6:
+    elif score < 0.55:
         return "Normal"
     else:
         return "High"
