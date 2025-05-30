@@ -18,7 +18,7 @@ def analisar_emocoes(texto_pt):
     #caso o texto tenha sido traduzido corretamente armazena as emocoes detectadas e retorna os 3 maiores indices
     try:
         resultado = classifier(texto_eng)
-        return resultado[:3]
+        return resultado
     
     except Exception as e:
         print(f"ERRO NA ANALISE: {e}")
