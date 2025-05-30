@@ -2,7 +2,7 @@ from transformers import pipeline
 from utils.translate import translate
 
 # Cria uma pipeline de classificação de texto usando o modelo passado e retorna as 3 principais chaves do dicionario
-classifier = pipeline("text-classification",model="j-hartmann/emotion-english-distilroberta-base",top_k = 3)
+classifier = pipeline("text-classification",model="j-hartmann/emotion-english-distilroberta-base",top_k = 7)
 
 
 #detecta as seguintes emocoes num texto: 'anger', 'disgust','fear', 'joy', 'neutral', 'sadness', 'surprise'
