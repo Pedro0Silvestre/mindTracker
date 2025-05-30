@@ -1,5 +1,5 @@
 peso_emocoes_por_sintoma = {
-    "ansiedade" : {
+    "anxiety" : {
         "fear" : 1.0,
         "sadness" : 0.5,
         "anger": 0.3,
@@ -8,7 +8,7 @@ peso_emocoes_por_sintoma = {
         "neutral": 0.0,
         "joy": -0.5
     },
-    "depressao": {
+    "depression": {
         "sadness": 1.0,
         "disgust": 0.5,
         "anger": 0.4,

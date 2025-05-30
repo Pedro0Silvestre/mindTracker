@@ -2,13 +2,9 @@ import json
 import matplotlib.pyplot as plt
 import seaborn as sns
 import pandas as pd
-import matplotlib.cm as cm
-import numpy as np
-import matplotlib.animation as animation
-import plotly.express as px
-from datetime import datetime
 
-emotions = pd.read_json("/content/db.json")
+
+emotions = pd.read_json("C:\Projetos_py\mindTracker\json.json")
 emotions_normalizado = pd.json_normalize(emotions['emotions'])
 df = emotions_normalizado
 
@@ -20,12 +16,38 @@ df['depressao'] = peso_alto * df['sadness'] + peso_medio * df['disgust'] + peso_
 df['ansiedade'] = peso_alto * df['fear'] + 0.15 * df['anger'] + 0.15 * df['surprise'] + peso_baixo * df['sadness'] + peso_baixo * (1 - df['joy'])
 df['estresse'] = peso_medio * df['anger'] + peso_medio * df['disgust'] + peso_medio * df['sadness'] + peso_medio * df['fear'] + peso_medio * (1 - df['joy'])
 df
+def grafico_depressao():
+    fig, ax = plt.subplots(figsize=(10,6))  # cria figura e eixo
 
-sns.lineplot(x=df['data'], y=df['depressao'], hue=df['curso'], data=df, marker='o', linewidth=2.5)
-plt.show()
+    sns.lineplot(x='data', y='depressao', hue='curso', data=df, marker='o', linewidth=2.5, ax=ax)
 
-sns.lineplot(x=df['data'], y=df['ansiedade'], hue=df['curso'], data=df, marker='o', linewidth=2.5)
-plt.show()
+    # você pode personalizar o gráfico aqui se quiser
+    ax.set_title('Depressão por Curso ao Longo do Tempo')
+    ax.set_xlabel('Data')
+    ax.set_ylabel('Depressão')
+    ax.legend(bbox_to_anchor=(0.5, -0.2), loc='upper center', borderaxespad=0)
+    ax.legend(title='Curso')
 
-sns.lineplot(x=df['data'], y=df['estresse'], hue=df['curso'], data=df, marker='o', linewidth=2.5)
-plt.show()
+    return fig
+def grafico_ansiedade():
+    fig, ax = plt.subplots(figsize=(10,6)) 
+    
+    sns.lineplot(x='data', y='ansiedade', hue='curso', data=df, marker='o', linewidth=2.5, ax=ax)
+    ax.set_title('Ansiedade por Curso ao Longo do Tempo')
+    ax.set_xlabel('Data')
+    ax.set_ylabel('Ansiedade')
+    ax.legend(bbox_to_anchor=(0.5, -0.2), loc='upper center', borderaxespad=0)
+    ax.legend(title='Curso')
+    
+    return fig
+def grafico_estresse():
+    fig, ax = plt.subplots(figsize=(10,6)) 
+    
+    sns.lineplot(x='data', y='estresse', hue='curso', data=df, marker='o', linewidth=2.5, ax=ax)
+    ax.set_title('Estresse por Curso ao Longo do Tempo')
+    ax.set_xlabel('Data')
+    ax.set_ylabel('Estresse')
+    ax.legend(bbox_to_anchor=(0.5, -0.2), loc='upper center', borderaxespad=0)
+    ax.legend(title='Curso')
+    
+    return fig

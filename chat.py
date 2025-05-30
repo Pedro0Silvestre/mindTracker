@@ -86,7 +86,7 @@ perguntas = [
     {"texto": "Como foram suas amizades ao longo da vida?"},
     {"texto": "O que teve ocupado mais espaço na sua cabeça atualmente e como isso faz você se sentir?"},
     {"texto": "Qual a última situação que você se sentiu desafiado? Como lidou com isso?"},
-    {"texto": "O que teve ocupado mais espaço na sua cabeça atualmente e como isso faz você se sentir?"},
+    {"texto": "Como você tem se sentido ultimamente?"},
 ]
 
 # Funções auxiliares
@@ -100,17 +100,17 @@ def gerar_mensagem_mock(risco_total):
         return "Alto", "Sinais intensos de estresse. Considere procurar apoio profissional."
 
 def nivel_risco(score):
-    if score < 0.4:
-        return "Baixo"
-    elif score < 0.8:
-        return "Moderado"
+    if score < 0.3:
+        return "Low"
+    elif score < 0.6:
+        return "Normal"
     else:
-        return "Alto"
+        return "High"
 
 def enviar_resposta_callback():
     resposta = st.session_state.input_resposta.strip()
     if not resposta:
-        st.warning("Por favor, responda antes de enviar.")
+        st.warning("Please, answer before sent")
         return
     p = perguntas[st.session_state.indice_pergunta]
 
@@ -138,16 +138,14 @@ if not st.session_state.started:
     ">
         <h2 style="text-align:center;">Bem-vindo ao Mind Tracker IA</h2>
         <p style="font-size:1.1rem; line-height:1.5;">
-            Bem vindo ao assistente inteligente que ajuda você a entender seu estado emocional,
-            analisando suas respostas a perguntas reflexivas sobre seu bem-estar.
+            The assistant that helps you understand your emotional state by
+analyzing your answers to thoughtful questions about your well-being.
         </p>
         <p style="font-size:1.1rem; line-height:1.5;">
-            Nosso objetivo é detectar sinais precoces de ansiedade, depressão e burnout, oferecendo um feedback
-            ético e respeitoso. Importante alertar que este sistema é apenas um indicativo e não substitui avaliação profissional.
+            Our goal is to detect early signs of anxiety, depression and burnout, offering ethical and respectful feedback. It is important to note that this system is only an indication and does not replace professional evaluation.
         </p>
         <p style="font-size:1.1rem; line-height:1.5;">
-            Para começar, clique no botão abaixo e responda as perguntas com sinceridade.
-        </p>
+To get started, click the button below and answer the questions honestly.        </p>
     </div>
     """, unsafe_allow_html=True)
     
@@ -157,7 +155,7 @@ if not st.session_state.started:
     # Centralizar o botão usando colunas
     col1, col2, col3 = st.columns([1, 2, 1])
     with col2:
-        if st.button("Iniciar Questionário"):
+        if st.button("Start"):
             st.session_state.started = True
             st.session_state.indice_pergunta = 0
             st.session_state.respostas = []
@@ -183,21 +181,21 @@ else:
         risco = resultado["risco_por_sintoma"]
         top_emocoes = resultado["top_3_emocoes"]
 
-        st.markdown("## Resultado final da triagem emocional")
+        st.markdown("## Final result of emotional screening")
 
-        st.markdown("### Níveis de risco:")
+        st.markdown("### risk levels:")
         for sintoma, score in risco.items():
             st.markdown(f"- **{sintoma.capitalize()}**: {nivel_risco(score)} ({score:.2f})")
 
-        st.markdown("### Top 3 emoções detectadas na triagem:")
+        st.markdown("### Top 3 emotions detected in the answers")
         for emo, media in top_emocoes:
             st.markdown(f"- {emo.capitalize()}: {media:.2f}")
 
-        st.markdown("### Respostas e emoções detectadas:")
+        st.markdown("### Responses and emotions detected:")
         for idx, entry in enumerate(st.session_state.respostas):
             st.markdown(f"**Pergunta {idx+1}:** {entry['pergunta']}")
             st.markdown(f"**Resposta:** {entry['resposta']}")
-            st.markdown("Emoções detectadas:")
+            st.markdown("Detected emotions:")
             for emo in entry['emocoes']:
                 score = emo.get('score', 0)
                 try:
@@ -209,7 +207,7 @@ else:
 
             st.markdown("---")
 
-        if st.button("Obrigado por participar"):
+        if st.button("thanks for participating"):
             st.session_state.started = False
             st.session_state.indice_pergunta = 0
             st.session_state.respostas = []
