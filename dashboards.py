@@ -22,9 +22,9 @@ def grafico_depressao():
     sns.lineplot(x='data', y='depressao', hue='curso', data=df, marker='o', linewidth=2.5, ax=ax)
 
     # você pode personalizar o gráfico aqui se quiser
-    ax.set_title('Depressão por Curso ao Longo do Tempo')
+    ax.set_title('Risco de depressão por Curso ao Longo do Tempo')
     ax.set_xlabel('Data')
-    ax.set_ylabel('Depressão')
+    ax.set_ylabel('Risco de Depressão')
     ax.legend(bbox_to_anchor=(0.5, -0.2), loc='upper center', borderaxespad=0)
     ax.legend(title='Curso')
 
@@ -33,7 +33,7 @@ def grafico_ansiedade():
     fig, ax = plt.subplots(figsize=(10,6)) 
     
     sns.lineplot(x='data', y='ansiedade', hue='curso', data=df, marker='o', linewidth=2.5, ax=ax)
-    ax.set_title('Ansiedade por Curso ao Longo do Tempo')
+    ax.set_title('Risco de Ansiedade por Curso ao Longo do Tempo')
     ax.set_xlabel('Data')
     ax.set_ylabel('Ansiedade')
     ax.legend(bbox_to_anchor=(0.5, -0.2), loc='upper center', borderaxespad=0)
@@ -44,7 +44,7 @@ def grafico_estresse():
     fig, ax = plt.subplots(figsize=(10,6)) 
     
     sns.lineplot(x='data', y='estresse', hue='curso', data=df, marker='o', linewidth=2.5, ax=ax)
-    ax.set_title('Estresse por Curso ao Longo do Tempo')
+    ax.set_title('Risco de Estresse por Curso ao Longo do Tempo')
     ax.set_xlabel('Data')
     ax.set_ylabel('Estresse')
     ax.legend(bbox_to_anchor=(0.5, -0.2), loc='upper center', borderaxespad=0)
